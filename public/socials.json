@@ -1,0 +1,22 @@
+{
+  "GitHub": {
+    "name": "GitHub",
+    "image": "/icons/github-alt.svg",
+    "link": "https://github.com/your-profile"
+  },
+  "CodePen": {
+    "name": "CodePen",
+    "image": "/icons/codepen.svg",
+    "link": "https://codepen.io/your-profile"
+  },
+  "instagram": {
+    "name": "Instagram",
+    "image": "/icons/instagram.svg",
+    "link": "https://www.instagram.com/your-profile"
+  },
+  "linkedin": {
+    "name": "LinkedIn",
+    "image": "/icons/linkedin.svg",
+    "link": "https://www.linkedin.com/in/your-profile"
+  }
+}

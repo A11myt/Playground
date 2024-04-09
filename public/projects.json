@@ -1,0 +1,93 @@
+{
+  "project": [
+    {
+      "id": 1,
+      "title": "Storybook",
+      "subtitle": "A11myt - Theme",
+      "description": "Dieses Storybook nutze ich als Styleguide, um die Komponenten einheitlich zu halten. Generell ist der Stil recht schlicht mit Naturtoenen gehalten. ",
+      "img": "/images/profile.png",
+      "github": true,
+      "link": "https://github.com/A11myt/AM-Storybook",
+      "language": ["react", "JS", "Html & Css"],
+      "prompt": []
+    },
+    {
+      "id": 2,
+      "title": "GiB",
+      "subtitle": "",
+      "description": "",
+      "img": "",
+
+      "github": false,
+      "link": "",
+
+      "language": ["Php", "JS", "Html & Css"],
+      "prompt": []
+    },
+    {
+      "id": 3,
+      "title": "E-Mail Signatur",
+      "subtitle": "Comic",
+      "description": "",
+      "img": "",
+
+      "github": true,
+      "link": "",
+
+      "language": ["Html & Css"],
+      "prompt": []
+    },
+    {
+      "id": 4,
+      "title": "Pong",
+      "subtitle": "Arduino",
+      "description": "",
+      "img": "",
+
+      "github": true,
+      "link": "",
+
+      "language": ["c++"],
+      "prompt": []
+    },
+    {
+      "id": 5,
+      "title": "Snake",
+      "subtitle": "Arduino Emulator",
+      "description": "",
+      "img": "",
+
+      "github": true,
+      "link": "",
+
+      "language": ["c++"],
+      "prompt": []
+    },
+    {
+      "id": 6,
+      "title": "Spectrum Visualiser",
+      "subtitle": "Arduino",
+      "description": "",
+      "img": "",
+
+      "github": true,
+      "link": "",
+
+      "language": ["c++"],
+      "prompt": []
+    },
+    {
+      "id": 7,
+      "title": "Project Ideas",
+      "subtitle": "Stupido STuff",
+      "description": "Pizza Calc, Chat Room, tshirt generator, decal generator",
+      "img": "",
+
+      "github": true,
+      "link": "",
+
+      "language": ["c++"],
+      "prompt": []
+    }
+  ]
+}

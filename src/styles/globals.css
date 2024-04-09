@@ -1,0 +1,237 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Hack */
+  @font-face {
+    font-family: Hack;
+    font-weight: 400;
+    src: url(./assets/fonts/Hack/Hack-Regular.ttf) format("opentype");
+  }
+
+  @font-face {
+    font-family: Hack;
+    font-weight: 400;
+    font-style: italic;
+    src: url(./assets/fonts/Hack/Hack-Regular-Italic.ttf) format("opentype");
+  }
+
+  @font-face {
+    font-family: Hack;
+    font-weight: 700;
+    src: url(./assets/fonts/Hack/Hack-Bold.ttf) format("opentype");
+  }
+
+  @font-face {
+    font-family: Hack;
+    font-weight: 700;
+    font-style: italic;
+    src: url(./assets/fonts/Hack/Hack-Bold-Italic.ttf) format("opentype");
+  }
+
+  /* DM Mono */
+  @font-face {
+    font-family: DMMono;
+    font-weight: 300;
+    src: url(./assets/fonts/DM_Mono/DMMono-Light.ttf) format("opentype");
+  }
+
+  @font-face {
+    font-family: DMMono;
+    font-weight: 300;
+    font-style: italic;
+    src: url(./assets/fonts/DM_Mono/DMMono-Light-Italic.ttf) format("opentype");
+  }
+
+  @font-face {
+    font-family: DMMono;
+    font-weight: 400;
+    src: url(./assets/fonts/DM_Mono/DMMono-Regular.ttf) format("opentype");
+  }
+
+  @font-face {
+    font-family: DMMono;
+    font-weight: 400;
+    font-style: italic;
+    src: url(./assets/fonts/DM_Mono/DMMono-Regular-Italic.ttf) format("opentype");
+  }
+
+  @font-face {
+    font-family: DMMono;
+    font-weight: 500;
+    src: url(./assets/fonts/DM_Mono/DMMono-Medium.ttf) format("opentype");
+  }
+
+  @font-face {
+    font-family: DMMono;
+    font-weight: 500;
+    font-style: italic;
+    src: url(./assets/fonts/DM_Mono/DMMono-Medium-Italic.ttf) format("opentype");
+  }
+
+  /* Passion One */
+
+  @font-face {
+    font-family: PassionOne;
+    font-weight: 400;
+    src: url(./assets/fonts/Passion_One/PassionOne-Regular.ttf) format("opentype");
+  }
+
+  @font-face {
+    font-family: PassionOne;
+    font-weight: 700;
+    src: url(./assets/fonts/Passion_One/PassionOne-Bold.ttf) format("opentype");
+  }
+
+  @font-face {
+    font-family: PassionOne;
+    font-weight: 900;
+    src: url(./assets/fonts/Passion_One/PassionOne-Bold.ttf) format("opentype");
+  }
+
+  /* Temp -Theodus ##### get replaced by my own font ##### */
+  @font-face {
+    font-family: ThedusCondensed;
+    font-weight: 300;
+    src: url(./assets/fonts/Thedus/ThedusCondensedLight-Regular.otf) format("opentype");
+  }
+
+  @font-face {
+    font-family: ThedusCondensed;
+    font-weight: 900;
+    src: url(./assets/fonts/Thedus/ThedusCondensedLight-Bold.otf) format("opentype");
+  }
+
+  @font-face {
+    font-family: ThedusStencil;
+    font-weight: 900;
+    src: url(./assets/fonts/Thedus/ThedusStencilWide-Regular.otf) format("opentype");
+  }
+
+  @font-face {
+    font-family: ThedusStencil;
+    font-weight: 300;
+    src: url(./assets/fonts/Thedus/ThedusStencilCondensed-Regular.otf) format("opentype");
+  }
+
+  @font-face {
+    font-family: ThedusWide;
+    font-weight: 900;
+    src: url(./assets/fonts/Thedus/ThedusWideLight-Bold.otf) format("opentype");
+  }
+
+  @font-face {
+    font-family: ThedusWide;
+    font-weight: 300;
+    src: url(./assets/fonts/Thedus/ThedusWideLight-Regular.otf) format("opentype");
+  }
+}
+
+:root {
+  /* new colors */
+  --light-50: #fefefe;
+  --light-100: #f8f8f8;
+  --light-200: #e5e3e0;
+  --light-300: #c6c4c0;
+  --light-400: #a7a6a4;
+  --light-500: #888888;
+  --light-600: #6a6a6a;
+  --light-700: #4d4d4d;
+  --light-800: #383737;
+  --light-900: #212121;
+  --light-950: #090808;
+
+  --primary-50: #fff5ef;
+  --primary-100: #fde4cf;
+  --primary-200: #fdd2a8;
+  --primary-300: #fcc08d;
+  --primary-400: #f8ad74;
+  --primary-500: #f49b5c;
+  --primary-600: #ee8844;
+  --primary-700: #e7752c;
+  --primary-800: #e0610e;
+
+  --orange-50: #ffb666;
+  --orange-100: #ff9243;
+  --orange-200: #f37222;
+  --orange-300: #d95b0b;
+  --orange-400: #be4500;
+  --orange-500: #a42e00;
+  --orange-600: #8b1200;
+  --orange-700: #6c0100;
+  --orange-800: #4b0000;
+
+  --blue-50: #a4dded;
+  --blue-100: #8cccf2;
+  --blue-200: #7abaee;
+  --blue-300: #6ba9e8;
+  --blue-400: #5d97e0;
+  --blue-500: #5186d8;
+  --blue-600: #4574d0;
+  --blue-700: #3863c7;
+  --blue-800: #2a52be;
+
+  /* nord */
+  --polarnight-50: #2e3440;
+  --polarnight-100: #3b4252;
+  --polarnight-200: #434c5e;
+  --polarnight-300: #4c566a;
+
+  --snowstorm-50: #d8dee9;
+  --snowstorm-100: #e5e9f0;
+  --snowstorm-200: #eceff4;
+
+  --frost-50: #8fbcbb;
+  --frost-100: #88c0d0;
+  --frost-200: #81a1c1;
+  --frost-300: #5e81ac;
+
+  --aurora-50: #bf616a;
+  --aurora-100: #d08770;
+  --aurora-200: #ebcb8b;
+  --aurora-300: #a3be8c;
+  --aurora-400: #b48ead;
+
+  /* futur colors */
+  --futureGreen-50: #B8BFB0;
+  --futureGreen-100: #A2A69C;
+  --futureOrange-50: #D9665B;
+  /* old colors */
+  /* white tones */
+}
+
+/* Need more settings */
+html {
+  scroll-behavior: smooth;
+}
+
+html * {
+  font-size: 14px !important;
+}
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+@layer base {
+  h1 {
+    @apply font-semibold text-4xl tracking-tighter text-light-950;
+  }
+
+  h2 {
+    @apply font-light text-3xl;
+  }
+
+  h3 {
+    @apply font-light text-2xl;
+  }
+
+  h4 {
+    @apply font-light text-xl;
+  }
+}

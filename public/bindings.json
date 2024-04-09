@@ -1,0 +1,10 @@
+[
+  {
+    "Astro": [
+      {
+        "keyBind": "Space + e",
+        "description": "To toggle the file explorer"
+      }
+    ]
+  }
+]
