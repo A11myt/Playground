@@ -3,12 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "set PORT=3005 && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
     "tailwind-watcher": "npx tailwindcss -i ./src/styles/globals.css -o ./src/tailwind.css --watch",
     "tailwind": "npx tailwindcss -i ./src/styles/globals.css -o ./src/tailwind.css"
   },
