@@ -1,92 +1,50 @@
 "use client";
-import React, { useEffect, useRef } from "react";
-import Menu from "@/components/atomics/radialMenu";
+import React, { useState } from "react";
+import Menu from "@/components/atomics/RadialMenu";
 import TextCutter from "@/components/molecules/TextCutter";
 import PrioList from "@/components/atomics/PrioList";
-export default function Home() {
-  const scrollRef = useRef<HTMLDivElement | null>(null);
-  const test = getFourFifthsOfDisplaySize();
+import ScrollHandler from "@/components/utils/ScrollHandler";
+import PageContainer from "@/components/atomics/PageContainer";
+import Dictionary from "@/components/molecules/Dictionary";
+import { IPage } from "@/components/interfaces/IPage";
+import Calculator from "@/components/atomics/Calculator";
+class PageCounter {
+  static pageNumber = 0;
 
-  function getFourFifthsOfDisplaySize() {
-    return typeof window !== "undefined" ? window.innerWidth * (5 / 5) : 0;
+  static incrementPageNumber() {
+    this.pageNumber += 1;
+    return this.pageNumber;
   }
+}
 
-  useEffect(() => {
-    const handleScroll = (e: WheelEvent) => {
-      e.preventDefault();
-      if (scrollRef.current) {
-        const index =
-          Math.round(scrollRef.current.scrollLeft / test) + Math.sign(e.deltaY);
-        const scrollDistance = index * test - scrollRef.current.scrollLeft;
-        scrollRef.current.scrollBy({
-          left: scrollDistance,
-          behavior: "smooth",
-        });
+export default function Home() {
+  const [pages, setPages] = useState<IPage[]>([]);
+
+  const addPage = (name: string) => {
+    const pageNumber = PageCounter.incrementPageNumber();
+    setPages((prevPages) => {
+      if (prevPages.some((page) => page.name === name)) {
+        return prevPages;
       }
-    };
-
-    if (scrollRef.current) {
-      scrollRef.current.addEventListener("wheel", handleScroll);
-    }
-
-    return () => {
-      if (scrollRef.current) {
-        scrollRef.current.removeEventListener("wheel", handleScroll);
-      }
-    };
-  }, []);
+      return [...prevPages, { pageNumber, name }];
+    });
+  };
 
   return (
-    <div>
-      <div
-        ref={scrollRef}
-        className="h-[calc(100vh-55px)] w-full overflow-x-scroll flex flex-row"
-      >
-        <div className="bg-slate-800 h-full w-full flex-none flex justify-center items-center flex-col">
-          <TextCutter />
-          <div className="p-4 flex w-full h-32">
-            <div className="rounded-md p-4 w-full flex items-center text-light-100 font-bold backdrop-blur-md bg-black/30 justify-between">
-              <span>{"//"}Module Name - TextCutter</span>
-              <span>
-                Later {"->"} {"//"}icon lock function
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-futureGreen-50 h-full w-full flex-none flex justify-center items-center  flex-col">
-          <Menu />
-          <div className="p-4  flex w-full h-32">
-            <div className="rounded-md p-4 w-full flex items-center text-light-100 font-bold backdrop-blur-md bg-black/30 justify-between">
-              <span>{"//"}Module Name - Radial Menu</span>
-              <span>
-                Later {"->"} {"//"}icon lock function
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className="bg-futureGreen-50 h-full w-full flex-none flex justify-center items-center  flex-col">
-          <div className='h-full'>
-          <PrioList />
-          </div>
-          <div className="p-4  flex w-full h-32">
-            <div className="rounded-md p-4 w-full flex items-center text-light-100 font-bold backdrop-blur-md bg-black/30 justify-between">
-              <span>{"//"}Module Name - Radial Menu</span>
-              <span>
-                Later {"->"} {"//"}icon lock function
-              </span>
-            </div>
-          </div>
-        </div>
-
-
-        <div className="bg-futureOrange-50 h-full w-full flex-none flex justify-center items-center">
-          2
-        </div>
-        <div className="bg-blue-400 h-full w-full flex-none flex justify-center items-center">
-          1
-        </div>
-      </div>
-    </div>
+    <ScrollHandler>
+      <Dictionary pages={pages} />
+      <PageContainer pageNumber={0} name={""} bgColor="#000">
+        <TextCutter pageName={addPage} />
+      </PageContainer>
+      <PageContainer pageNumber={1} name={""} bgColor="#000">
+        <PrioList pageName={addPage} />
+      </PageContainer>
+      <PageContainer pageNumber={2} name={""} bgColor="#000">
+        <Menu pageName={addPage} />
+      </PageContainer>
+      <PageContainer pageNumber={3} name={""} bgColor="#000">
+        <Calculator pageName={addPage} />
+      </PageContainer>{" "}
+    </ScrollHandler>
   );
 }

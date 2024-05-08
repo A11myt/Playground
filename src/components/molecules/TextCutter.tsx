@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { ICallback } from "../interfaces/IPage";
 
-export default function TextCutter({ }) {
+export default function TextCutter({ pageName }: {pageName: ICallback}) {
+    const moduleName = "TextCutter";
+    useEffect(() => { if (pageName) pageName(moduleName); }, [pageName]);
+
     const [text, setText] = useState("");
     const [cuttedText, setCuttedText] = useState("");
 
@@ -9,6 +13,8 @@ export default function TextCutter({ }) {
         const trimmedText = event.target.value.replace(/\s+/g, '');
         setCuttedText(trimmedText);
     };
+
+
 
     return (
         <div className="grid grid-cols-2 gap-4  w-full h-full p-4">
@@ -21,4 +27,3 @@ export default function TextCutter({ }) {
         </div>
     );
 }
-

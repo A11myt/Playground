@@ -1,6 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { ICallback } from '../interfaces/IPage';
 
-export default function Menu() {
+export default function Menu({ pageName }: { pageName: ICallback }) {
+  const moduleName = "radial Menu";
+  useEffect(() => { if (pageName) pageName(moduleName); }, [pageName]);
+
+
   const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item 7', 'Item 8']; // Add more items as needed
   const radius = 100; // The radius of the circle
 

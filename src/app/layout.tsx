@@ -2,6 +2,7 @@ import "../tailwind.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "./navbar";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -27,7 +28,7 @@ export function Playground({ children }: { children: React.ReactNode }) {
   return (
     <div className="w-screen flex flex-row bg-light-50">
       <div className="w-full h-screen">
-        <Navbar />
+        <Navbar color={""} pages={0} />
         {children}
       </div>
     </div>

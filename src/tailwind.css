@@ -726,6 +726,10 @@ h4 {
   --tw-backdrop-sepia:  ;
 }
 
+.static {
+  position: static !important;
+}
+
 .absolute {
   position: absolute !important;
 }
@@ -846,12 +850,24 @@ h4 {
   resize: none !important;
 }
 
+.grid-flow-row {
+  grid-auto-flow: row !important;
+}
+
+.grid-flow-col {
+  grid-auto-flow: column !important;
+}
+
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
 }
 
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
 }
 
 .flex-row {
@@ -920,18 +936,6 @@ h4 {
   background-color: rgb(0 0 0 / 0.3) !important;
 }
 
-.bg-blue-400 {
-  background-color: var(--blue-400) !important;
-}
-
-.bg-futureGreen-50 {
-  background-color: var(--futureGreen-50) !important;
-}
-
-.bg-futureOrange-50 {
-  background-color: var(--futureOrange-50) !important;
-}
-
 .bg-light-50 {
   background-color: var(--light-50) !important;
 }
@@ -940,9 +944,9 @@ h4 {
   background-color: var(--light-900) !important;
 }
 
-.bg-slate-800 {
+.bg-slate-400 {
   --tw-bg-opacity: 1 !important;
-  background-color: rgb(30 41 59 / var(--tw-bg-opacity)) !important;
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity)) !important;
 }
 
 .bg-white\/30 {
