@@ -1,12 +1,26 @@
 import React, { useEffect, useRef } from "react";
 
-export default function ScrollHandler({ children }: { children: React.ReactNode }) {
+export default function ScrollHandler({ children, pageNumber }: { children: React.ReactNode, pageNumber?: number | undefined }) {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const test = getFourFifthsOfDisplaySize();
 
   function getFourFifthsOfDisplaySize() {
     return typeof window !== "undefined" ? window.innerWidth * (5 / 5) : 0;
   }
+
+  const scrollToPage = (pageNumber: number) => {
+    const scrollDistance = pageNumber * test;
+    scrollRef.current?.scrollTo({
+      left: scrollDistance,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    if (pageNumber !== undefined) {
+      scrollToPage(pageNumber);
+    }
+  }, [pageNumber]);
 
   useEffect(() => {
     const handleScroll = (e: WheelEvent) => {

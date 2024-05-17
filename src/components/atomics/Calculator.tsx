@@ -78,7 +78,7 @@ export default function Calculator({ pageName }: { pageName: ICallback }) {
   }
 
   return (
-    <div className="flex items-center justify-center w-full h-screen flex-col bg-gray-100">
+    <div className="flex items-center justify-center w-full h-screen flex-col ">
       <h1 className="font-bold text-lg my-2">Calculator</h1>
       <div className="flex items-center justify-center shadow-lg w-1/5 h-auto p-4 flex-col rounded-md bg-white">
         <input className="text-end w-full h-10 bg-gray-200 m-2 px-2 rounded-md font-bold" disabled type="text" value={displayValue} />

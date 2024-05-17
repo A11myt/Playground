@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ICallback } from "../interfaces/IPage";
 
-export default function TextCutter({ pageName }: {pageName: ICallback}) {
+export default function TextCutter({ pageName }: { pageName: ICallback }) {
     const moduleName = "TextCutter";
     useEffect(() => { if (pageName) pageName(moduleName); }, [pageName]);
 
@@ -10,12 +10,15 @@ export default function TextCutter({ pageName }: {pageName: ICallback}) {
 
     const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setText(event.target.value);
-        const trimmedText = event.target.value.replace(/\s+/g, '');
+        const trimmedText = event.target.value.split('"')
+            .map((element, index) =>
+                index % 2 === 0  // If it's an even index, remove spaces
+                    ? element.replace(/\s+/g, '')
+                    : element     // If it's an odd index, return the element as is
+            )
+            .join('"');
         setCuttedText(trimmedText);
     };
-
-
-
     return (
         <div className="grid grid-cols-2 gap-4  w-full h-full p-4">
             <textarea

@@ -1,14 +1,45 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-export default function PageContainer({ pageNumber, name, children, bgColor }: { pageNumber: number, name: string, children: React.ReactNode, bgColor: string }) {
-
+export default function PageContainer({
+  pageNumber,
+  name,
+  children,
+  bgColor,
+}: {
+  pageNumber: number;
+  name: string;
+  children: React.ReactNode;
+  bgColor?: string;
+}) {
   return (
-    <div className="h-full justify-between w-full flex-none flex items-center flex-col" style={{ backgroundColor: bgColor }}>
+    <div
+      className="h-full justify-between w-full flex-none flex items-center flex-col"
+      style={{ backgroundColor: bgColor }}
+    >
       {children}
-      <div className="p-4 flex w-full h-32">
-        <div className="rounded-md p-4 w-full flex items-center text-light-100 font-bold backdrop-blur-md bg-black/30 justify-between">
-          <span>{"//"}{name}  {pageNumber}</span>
-          <span>Later {"->"} {"//"}icon lock function</span>
+      <div className="p-4 flex w-full h-24">
+        <div className="rounded-md p-auto w-full flex items-center text-gray-800/90 font-bold backdrop-blur-md bg-black/10 justify-between">
+          <div className="grid  grid-flow-col h-full items-center">
+            <span className=" align-center border-gray-800/90 border-r px-3 font-black text-2xl">
+              2024
+            </span>
+            <div className="flex flex-col font-bold p-2">
+              <span className="text-sm"> 7th </span>
+              <span className="text-sm"> May </span>
+            </div>
+            <div className="pl-3 flex flex-row">
+              {name}
+              <button className=" ml-1 rounded-full h-4 w-4 flex items-center justify-center border-2 border-gray-800/90">
+                <span className="text-xs font-medium">i</span>
+              </button>
+            </div>
+          </div>
+          <div className="px-2  items-center flex flex-row">
+            <div className="pr-1">{"<"}</div>
+            <div className="w-1 flex items-top h-1 rotate-45 bg-black "></div>
+            <span className="px-1 text-xl font-bold">{pageNumber}</span>
+            <div className="pl-1">{">"}</div>
+          </div>
         </div>
       </div>
     </div>

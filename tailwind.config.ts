@@ -8,7 +8,7 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   important: true,
-  darkMode: 'class',
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -118,6 +118,7 @@ const config: Config = {
         Hack: ["Hack", "monospace"],
         DMMono: ["DMMono", "monospace"],
         sans: ["Helvetica", "Arial", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
       gridTemplateColumns: {
         mycols: "65% 35%",
