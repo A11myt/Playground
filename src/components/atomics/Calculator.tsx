@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { ICallback } from "../interfaces/IPage";
 
-export default function Calculator({ pageName }: { pageName: ICallback }) {
-  const moduleName = "Calculator";
-  useEffect(() => {
-    if (pageName) pageName(moduleName);
-  }, [pageName]);
-
-
+export default function Calculator() {
 
   const [displayValue, setDisplayValue] = useState("0");
   const [operator, setOperator] = useState("");
@@ -78,9 +71,9 @@ export default function Calculator({ pageName }: { pageName: ICallback }) {
   }
 
   return (
-    <div className="flex items-center justify-center w-full h-screen flex-col ">
-      <h1 className="font-bold text-lg my-2">Calculator</h1>
+    <div className="flex items-center justify-center w-full h-full flex-col">
       <div className="flex items-center justify-center shadow-lg w-1/5 h-auto p-4 flex-col rounded-md bg-white">
+
         <input className="text-end w-full h-10 bg-gray-200 m-2 px-2 rounded-md font-bold" disabled type="text" value={displayValue} />
         <div className="grid grid-cols-4 gap-2 w-full">
           <CalculatorButton label="C" onClick={onClearClick} />
@@ -103,6 +96,7 @@ export default function Calculator({ pageName }: { pageName: ICallback }) {
           <NumberButton value="." onClick={() => onNumberClick(".")} />
           <OperatorButton value="=" onClick={() => onEqualsClick()} />
         </div>
+        
       </div>
     </div>
   )

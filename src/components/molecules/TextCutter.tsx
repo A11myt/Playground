@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { ICallback } from "../interfaces/IPage";
 
-export default function TextCutter({ pageName }: { pageName: ICallback }) {
-    const moduleName = "TextCutter";
-    useEffect(() => { if (pageName) pageName(moduleName); }, [pageName]);
+export default function TextCutter() {
 
     const [text, setText] = useState("");
     const [cuttedText, setCuttedText] = useState("");

@@ -26,12 +26,12 @@ export default function RootLayout({
 
 export function Playground({ children }: { children: React.ReactNode }) {
   return (
-    <div className="w-screen flex flex-row bg-light-50">
+    <div className="w-screen h-screen flex flex-row bg-light-50">
       <div
         style={{
           background: "linear-gradient(145deg, rgba(2,0,36,1) 0%, rgba(162,166,156,1) 0%, rgba(184,191,176,1) 10%, rgba(255,255,255,1) 45%, rgba(255,253,250,1) 75%, rgba(228,193,140,1) 90%, rgba(246,154,60,1) 100%);"
         }}
-        className="w-full h-screen"
+        className="w-full h-full overflow-hidden"
       >
         {children}
       </div>

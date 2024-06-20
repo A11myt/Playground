@@ -1,67 +1,85 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Menu from "@/components/atomics/RadialMenu";
 import TextCutter from "@/components/molecules/TextCutter";
 import PrioList from "@/components/atomics/PrioList";
-import ScrollHandler from "@/components/utils/ScrollHandler";
-import PageContainer from "@/components/atomics/PageContainer";
 import Dictionary from "@/components/molecules/Dictionary";
-import { IPage } from "@/components/interfaces/IPage";
+import { IModal } from "@/components/interfaces/Interfaces";
 import Calculator from "@/components/atomics/Calculator";
 import Navbar from "@/app/navbar";
-class PageCounter {
-  static pageNumber = 0;
+import Modal from "@/components/atomics/Modal";
+import ScrollAnimation from "@/components/atomics/ScrollAnimation";
 
-  static incrementPageNumber() {
-    this.pageNumber += 1;
-    return this.pageNumber;
+
+class ModalCounter {
+  static number = 0;
+  static incrementModalNumber() {
+    this.number += 1;
+    return this.number;
   }
 }
 
 export default function Home() {
-  const [pages, setPages] = useState<IPage[]>([]);
-  const [currentPage, setCurrentPage] = useState<number>(0);
-  const addPage = (name: string) => {
-    const pageNumber = PageCounter.incrementPageNumber();
-    setPages((prevPages) => {
-      if (prevPages.some((page) => page.name === name)) {
-        return prevPages;
+  const [modals, setModals] = useState<IModal[]>([]);
+  const [currentModal, setCurrentModal] = useState<number>(0);
+
+  const modalConfigs = [
+    { number: 1, name: "Text Cutter", Component: TextCutter, bgColor: "#000000" },
+    { number: 2, name: "Prio List", Component: PrioList, bgColor: "#ffffff" },
+    { number: 3, name: "Radial Menu", Component: Menu, bgColor: "#ffffff" },
+    { number: 4, name: "Calculator", Component: Calculator, bgColor: "#000000" },
+    { number: 5, name: "scrollAnimaton", Component: ScrollAnimation, bgColor: "#000000" }
+
+    // Add more modal configurations here
+  ];
+  useEffect(() => {
+    modalConfigs.forEach((modalConfig) => {
+      addButton(modalConfig); // Pass the entire modalConfig object
+    });
+  }, []);
+
+  const addButton = (modalConfig: { number: number; name: string; Component: React.ComponentType; bgColor: string }) => {
+    setModals((prevModals) => {
+      if (prevModals.some((modal) => modal.name === modalConfig.name)) {
+        console.log("Modal already exists");
+        return prevModals;
       }
-      return [...prevPages, { pageNumber, name }];
+      console.log("Modal added");
+      return [...prevModals, modalConfig]; // Use the entire modalConfig object
     });
   };
 
-  const scrollToPage = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
+  const openModal = (pageNumber: number) => {
+    setCurrentModal(pageNumber);
   };
 
+  const toggleModal = (modalNumber: number) => {
+    if (currentModal === modalNumber) {
+        // If the same modal number is passed, close the modal
+        setCurrentModal(0); // Assuming 0 indicates no modal is open
+    } else {
+        // If a different modal number is passed, open that modal
+        setCurrentModal(modalNumber);
+    }
+};
+
+  const isOpen = (number: number) => currentModal === number;
+
   return (
-    <>
-      <Navbar color="" pages={pages.length} onClick={() => scrollToPage(0)} />
-      <ScrollHandler pageNumber={currentPage}>
-        <Dictionary pages={pages} scrollToPage={scrollToPage} />
-        <PageContainer pageNumber={1} name={"Text Cutter"}>
-          <TextCutter pageName={addPage} />
-        </PageContainer>
-        <PageContainer pageNumber={2} name={"Prio List"} bgColor="">
-          <PrioList pageName={addPage} />
-        </PageContainer>
-        <PageContainer pageNumber={3} name={"Radial Menu"} bgColor="#000">
-          <Menu pageName={addPage} />
-        </PageContainer>
-        <PageContainer pageNumber={4} name={"Calc "} bgColor="#000">
-          <Calculator pageName={addPage} />
-        </PageContainer>{" "}
-        <PageContainer pageNumber={5} name={"Healthbar"} bgColor="#efefef">
-          <div className="flex justify-center h-full items-center ">
-            <div className="flex  h-8 overflow-hidden font-sans w-72 text-xs font-medium rounded-xl flex-start bg-light-10 border-2 border-black dark:border-none ">
-              <div className="flex bg-red-300 w-full items-center bg-light-100 justify-center h-full overflow-hidden text-black break-all">
-                <div className="flex justify-center">32/100</div>
-              </div>
-            </div>
-          </div>
-        </PageContainer>
-      </ScrollHandler>
-    </>
+    <div className="flex flex-col w-full h-full">
+      <Navbar color="" pages={modals.length} onClick={() => openModal(0)} />
+      <div className="flex h-[calc(100%-55px)] w-full">
+        <div className=" w-2/12 h-full">
+          <Dictionary activeModal={currentModal} modals={modals} openModal={toggleModal} />
+        </div>
+        <div className="flex w-10/12 h-auto">
+          {modalConfigs.map(({ number, name, Component, bgColor }) => (
+            <Modal key={number} number={number} name={name} bgColor={bgColor} isOpen={isOpen(number)} onClose={() => toggleModal(number)}>
+              <Component />
+            </Modal>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }

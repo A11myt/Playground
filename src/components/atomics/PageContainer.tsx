@@ -12,11 +12,10 @@ export default function PageContainer({
   bgColor?: string;
 }) {
   return (
-    <div
-      className="h-full justify-between w-full flex-none flex items-center flex-col"
-      style={{ backgroundColor: bgColor }}
-    >
+    <div className="h-full justify-between w-full flex-none flex items-center flex-col" style={{ backgroundColor: bgColor }}>
+      
       {children}
+
       <div className="p-4 flex w-full h-24">
         <div className="rounded-md p-auto w-full flex items-center text-gray-800/90 font-bold backdrop-blur-md bg-black/10 justify-between">
           <div className="grid  grid-flow-col h-full items-center">

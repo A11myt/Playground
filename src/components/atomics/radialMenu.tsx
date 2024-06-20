@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ICallback } from '../interfaces/IPage';
 
-export default function Menu({ pageName }: { pageName: ICallback }) {
-  const moduleName = "radial Menu";
-  useEffect(() => { if (pageName) pageName(moduleName); }, [pageName]);
-
+export default function Menu() {
 
   const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item 7', 'Item 8']; // Add more items as needed
   const radius = 100; // The radius of the circle
@@ -64,17 +60,14 @@ export default function Menu({ pageName }: { pageName: ICallback }) {
     <div className='p-4 w-full h-full flex flex-col justify-between' onMouseMove={handleMouseMove}>
       <div className='w-full h-full flex flex-col justify-between'>
         <div className='p-4 w-full h-full  flex flex-col justify-between'>
-
           <div className='w-full flex justify-between'>
             {renderPlusSign()}
             {renderPlusSign()}
           </div>
-
           <div className='flex items-center justify-center relative'>
             {renderLines()}
             {renderRadialMenu()}
           </div>
-
           <div className='w-full flex justify-between items-end'>
             {renderPlusSign()}
             {renderMousePosition()}

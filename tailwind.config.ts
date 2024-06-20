@@ -11,6 +11,7 @@ const config: Config = {
   darkMode: "class",
   theme: {
     extend: {
+      
       colors: {
         primary: {
           50: "var(--primary-50)",

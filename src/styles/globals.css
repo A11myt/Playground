@@ -7,7 +7,9 @@
 .font-orbitron {
   font-family: "Orbitron", sans-serif;
 }
+
 @layer base {
+
   /* Hack */
   @font-face {
     font-family: Hack;
@@ -59,8 +61,7 @@
     font-family: DMMono;
     font-weight: 400;
     font-style: italic;
-    src: url(./assets/fonts/DM_Mono/DMMono-Regular-Italic.ttf)
-      format("opentype");
+    src: url(./assets/fonts/DM_Mono/DMMono-Regular-Italic.ttf) format("opentype");
   }
 
   @font-face {
@@ -81,8 +82,7 @@
   @font-face {
     font-family: PassionOne;
     font-weight: 400;
-    src: url(./assets/fonts/Passion_One/PassionOne-Regular.ttf)
-      format("opentype");
+    src: url(./assets/fonts/Passion_One/PassionOne-Regular.ttf) format("opentype");
   }
 
   @font-face {
@@ -101,29 +101,25 @@
   @font-face {
     font-family: ThedusCondensed;
     font-weight: 300;
-    src: url(./assets/fonts/Thedus/ThedusCondensedLight-Regular.otf)
-      format("opentype");
+    src: url(./assets/fonts/Thedus/ThedusCondensedLight-Regular.otf) format("opentype");
   }
 
   @font-face {
     font-family: ThedusCondensed;
     font-weight: 900;
-    src: url(./assets/fonts/Thedus/ThedusCondensedLight-Bold.otf)
-      format("opentype");
+    src: url(./assets/fonts/Thedus/ThedusCondensedLight-Bold.otf) format("opentype");
   }
 
   @font-face {
     font-family: ThedusStencil;
     font-weight: 900;
-    src: url(./assets/fonts/Thedus/ThedusStencilWide-Regular.otf)
-      format("opentype");
+    src: url(./assets/fonts/Thedus/ThedusStencilWide-Regular.otf) format("opentype");
   }
 
   @font-face {
     font-family: ThedusStencil;
     font-weight: 300;
-    src: url(./assets/fonts/Thedus/ThedusStencilCondensed-Regular.otf)
-      format("opentype");
+    src: url(./assets/fonts/Thedus/ThedusStencilCondensed-Regular.otf) format("opentype");
   }
 
   @font-face {
@@ -135,8 +131,7 @@
   @font-face {
     font-family: ThedusWide;
     font-weight: 300;
-    src: url(./assets/fonts/Thedus/ThedusWideLight-Regular.otf)
-      format("opentype");
+    src: url(./assets/fonts/Thedus/ThedusWideLight-Regular.otf) format("opentype");
   }
 }
 
@@ -246,4 +241,20 @@ p {
   h4 {
     @apply font-light text-xl;
   }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-appear {
+  animation: appear linear 1s;
+  animation-timeline: view();
+  animation-range: entry 0% cover 60%;
 }

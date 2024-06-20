@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "export PORT=3005 && next dev",
+    "start": "set PORT=3005 && next dev",
     "build": "next build",
     "start-server": "next start",
     "lint": "next lint",
     "tailwind-watcher": "npx tailwindcss -i ./src/styles/globals.css -o ./src/tailwind.css --watch",
     "tailwind": "npx tailwindcss -i ./src/styles/globals.css -o ./src/tailwind.css",
-    "dev": "npm start & npm run tailwind-watcher"
+    "dev": "npm run start"
   },
   "dependencies": {
     "@types/jsonwebtoken": "^9.0.4",
