@@ -179,31 +179,27 @@
   --blue-700: #3863c7;
   --blue-800: #2a52be;
 
-  /* nord */
-  --polarnight-50: #2e3440;
-  --polarnight-100: #3b4252;
-  --polarnight-200: #434c5e;
-  --polarnight-300: #4c566a;
+  --night-100: #191D24;
+  --night-75: #222630;
+  --night-50: #2E3440;
+  --night-25: #434C5E;
 
-  --snowstorm-50: #d8dee9;
-  --snowstorm-100: #e5e9f0;
-  --snowstorm-200: #eceff4;
+  --snow-50: #ECEFF4;
+  --snow-100: #D8DEE9;
+  --snow-200: #C0C8D8;
 
-  --frost-50: #8fbcbb;
-  --frost-100: #88c0d0;
-  --frost-200: #81a1c1;
-  --frost-300: #5e81ac;
-
-  --aurora-50: #bf616a;
-  --aurora-100: #d08770;
-  --aurora-200: #ebcb8b;
-  --aurora-300: #a3be8c;
-  --aurora-400: #b48ead;
+  --aurora-50:  #b74e58;
+  --aurora-100: #ffa500;
+  --aurora-200: #47c7fc;
+  --aurora-300: #b5d1b8;
+  --aurora-400: #cc4f08;
+  --aurora-500: #af4f9e;
 
   /* futur colors */
   --futureGreen-50: #b8bfb0;
   --futureGreen-100: #a2a69c;
   --futureOrange-50: #d9665b;
+
   /* old colors */
   /* white tones */
 }
@@ -253,8 +249,9 @@ p {
   }
 }
 
-.animate-appear {
-  animation: appear linear 1s;
-  animation-timeline: view();
-  animation-range: entry 0% cover 60%;
+.dots-background {
+  background-image: radial-gradient(circle, #000 1px, transparent 1px),
+                    radial-gradient(circle, #000 1px, transparent 1px);
+  background-position: 0 0, 25px 25px;
+  background-size: 50px 50px;
 }

@@ -11,7 +11,7 @@ const config: Config = {
   darkMode: "class",
   theme: {
     extend: {
-      
+
       colors: {
         primary: {
           50: "var(--primary-50)",
@@ -59,16 +59,16 @@ const config: Config = {
           900: "var(--light-900)",
           950: "var(--light-950)",
         },
-        polarnight: {
-          50: "var(--polarnight-50)",
-          100: "var(--polarnight-100)",
-          200: "var(--polarnight-200)",
-          300: "var(--polarnight-300)",
+        night: {
+          50: "var(--night-50)",
+          100: "var(--night-100)",
+          200: "var(--night-200)",
+          300: "var(--night-300)",
         },
-        snowstorm: {
-          50: "var(--snowstorm-50)",
-          100: "var(--snowstorm-100)",
-          200: "var(--snowstorm-200)",
+        snow: {
+          50: "var(--snow-50)",
+          100: "var(--snow-100)",
+          200: "var(--snow-200)",
         },
         frost: {
           50: "var(--frost-50)",

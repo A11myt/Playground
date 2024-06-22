@@ -7,34 +7,50 @@ import Dictionary from "@/components/molecules/Dictionary";
 import { IModal } from "@/components/interfaces/Interfaces";
 import Calculator from "@/components/atomics/Calculator";
 import Navbar from "@/app/navbar";
-import Modal from "@/components/atomics/Modal";
+import Modal from "./Modal";
 import ScrollAnimation from "@/components/atomics/ScrollAnimation";
+import Colors from "@/components/atomics/Colors";
 
-
-class ModalCounter {
-  static number = 0;
-  static incrementModalNumber() {
-    this.number += 1;
-    return this.number;
-  }
-}
 
 export default function Home() {
   const [modals, setModals] = useState<IModal[]>([]);
   const [currentModal, setCurrentModal] = useState<number>(0);
 
-  const modalConfigs = [
-    { number: 1, name: "Text Cutter", Component: TextCutter, bgColor: "#000000" },
-    { number: 2, name: "Prio List", Component: PrioList, bgColor: "#ffffff" },
-    { number: 3, name: "Radial Menu", Component: Menu, bgColor: "#ffffff" },
-    { number: 4, name: "Calculator", Component: Calculator, bgColor: "#000000" },
-    { number: 5, name: "scrollAnimaton", Component: ScrollAnimation, bgColor: "#000000" }
+  const toggleDarkMode = () => {
+    if (isDarkMode) {
+      window.document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    } else {
+      localStorage.setItem("theme", "dark");
+      window.document.documentElement.classList.add("dark");
+    }
+    setIsDarkMode(!isDarkMode);
+  };
 
-    // Add more modal configurations here
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const modalConfigs = [
+    { number: 1, name: "Text Cutter", Component: TextCutter, bgColor: "#000000", modalDate: { year: "2024", month: "7th", day: "May" } },
+    { number: 2, name: "Prio List", Component: PrioList, bgColor: "#ffffff", modalDate: { year: "2024", month: "7th", day: "May" } },
+    { number: 3, name: "Radial Menu", Component: Menu, bgColor: "#f66000", modalDate: { year: "2024", month: "7th", day: "May" } },
+    { number: 4, name: "Calculator", Component: Calculator, bgColor: "#ffffff", modalDate: { year: "2024", month: "7th", day: "May" } },
+    { number: 5, name: "scrollAnimaton", Component: ScrollAnimation, bgColor: "#ffffff", modalDate: { year: "2024", month: "20th", day: "June" } },
+    { number: 6, name: "Colors", Component: Colors, bgColor: "#ffffff", modalDate: { year: "2024", month: "21th", day: "June" } }
+
   ];
+
+  useEffect(() => {
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+      window.document.documentElement.classList.add("dark");
+      setIsDarkMode(true);
+    }
+  }, []);
+
+
   useEffect(() => {
     modalConfigs.forEach((modalConfig) => {
-      addButton(modalConfig); // Pass the entire modalConfig object
+      addButton(modalConfig);
     });
   }, []);
 
@@ -45,7 +61,7 @@ export default function Home() {
         return prevModals;
       }
       console.log("Modal added");
-      return [...prevModals, modalConfig]; // Use the entire modalConfig object
+      return [...prevModals, modalConfig];
     });
   };
 
@@ -55,29 +71,34 @@ export default function Home() {
 
   const toggleModal = (modalNumber: number) => {
     if (currentModal === modalNumber) {
-        // If the same modal number is passed, close the modal
-        setCurrentModal(0); // Assuming 0 indicates no modal is open
+      setCurrentModal(0);
     } else {
-        // If a different modal number is passed, open that modal
-        setCurrentModal(modalNumber);
+      setCurrentModal(modalNumber);
     }
-};
-
+  };
   const isOpen = (number: number) => currentModal === number;
 
   return (
-    <div className="flex flex-col w-full h-full">
-      <Navbar color="" pages={modals.length} onClick={() => openModal(0)} />
-      <div className="flex h-[calc(100%-55px)] w-full">
-        <div className=" w-2/12 h-full">
-          <Dictionary activeModal={currentModal} modals={modals} openModal={toggleModal} />
-        </div>
-        <div className="flex w-10/12 h-auto">
-          {modalConfigs.map(({ number, name, Component, bgColor }) => (
-            <Modal key={number} number={number} name={name} bgColor={bgColor} isOpen={isOpen(number)} onClose={() => toggleModal(number)}>
-              <Component />
-            </Modal>
-          ))}
+    <div className={`flex flex-col w-full h-full ${isDarkMode ? 'dark' : ''}`}>
+      <div
+        style={
+          isDarkMode ? {
+            background: "linear-gradient(145deg, rgba(2,0,36,1) 0%, rgba(162,166,156,1) 0%, rgba(184,191,176,1) 10%, rgba(255,255,255,1) 45%, rgba(255,253,250,1) 75%, rgba(228,193,140,1) 90%, rgba(246,154,60,1) 100%)"
+          } : { background: "linear-gradient(145deg, rgba(192, 200, 216,1) 0%, rgba(25, 29, 36,1) 25%, rgba(34, 38, 48,1) 75%, rgba(255, 165, 0,1) 100%)" }
+        }
+        className="w-full h-full overflow-hidden">
+        <Navbar color="" pages={modals.length} onClick={() => openModal(0)} toggleDarkMode={toggleDarkMode} />
+        <div className="flex h-[calc(100%-55px)] w-full">
+          <div className=" w-2/12 h-full">
+            <Dictionary activeModal={currentModal} modals={modals} openModal={toggleModal} />
+          </div>
+          <div className="flex w-10/12 h-auto ">
+            {modalConfigs.map(({ number, name, Component, bgColor, modalDate }) => (
+              <Modal key={number} number={number} name={name} bgColor={bgColor} isOpen={isOpen(number)} onClose={() => toggleModal(number)} date={modalDate}>
+                <Component />
+              </Modal>
+            ))}
+          </div>
         </div>
       </div>
     </div>

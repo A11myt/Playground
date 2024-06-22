@@ -1,6 +1,5 @@
 export default function ScrollAnimation() {
 
-
     return (
         <>
             <style>
@@ -14,6 +13,7 @@ export default function ScrollAnimation() {
                     animation-range: entry 0% cover 60%;
                 }`} 
             </style>
+
             <div className="h-full w-full bg-white rounded" >
                 <div className="flex flex-col h-full items-center overflow-y-auto ">
                     <h1 className="flex justify-center w-full py-4 mb-96">
@@ -38,6 +38,7 @@ export default function ScrollAnimation() {
                         <div className="bg-yellow-300 h-[300px] border-2 border-black m-2 w-[300px] animate-appear"></div>
                         <div className="bg-blue-300 h-[300px] border-2 border-black m-2 w-[300px] animate-appear"></div>
                         <div className=" bg-red-300 h-[300px] border-2 border-black m-2 w-[700px] animate-appear"></div>
+
                     </div>
                 </div>
             </div>
