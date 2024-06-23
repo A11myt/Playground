@@ -766,6 +766,10 @@ h4{
   margin: 0.5rem !important;
 }
 
+.mb-2{
+  margin-bottom: 0.5rem !important;
+}
+
 .mb-96{
   margin-bottom: 24rem !important;
 }
@@ -776,10 +780,6 @@ h4{
 
 .mr-\[-10px\]{
   margin-right: -10px !important;
-}
-
-.mb-2{
-  margin-bottom: 0.5rem !important;
 }
 
 .flex{
@@ -796,6 +796,10 @@ h4{
 
 .h-10{
   height: 2.5rem !important;
+}
+
+.h-12{
+  height: 3rem !important;
 }
 
 .h-20{
@@ -858,10 +862,6 @@ h4{
   height: 100vh !important;
 }
 
-.h-16{
-  height: 4rem !important;
-}
-
 .max-h-fit{
   max-height: -moz-fit-content !important;
   max-height: fit-content !important;
@@ -879,8 +879,8 @@ h4{
   width: 83.333333% !important;
 }
 
-.w-16{
-  width: 4rem !important;
+.w-12{
+  width: 3rem !important;
 }
 
 .w-2\/12{
@@ -1015,10 +1015,6 @@ h4{
   gap: 1rem !important;
 }
 
-.gap-1{
-  gap: 0.25rem !important;
-}
-
 .overflow-auto{
   overflow: auto !important;
 }
@@ -1062,10 +1058,6 @@ h4{
 
 .rounded-tr-lg{
   border-top-right-radius: 0.5rem !important;
-}
-
-.border{
-  border-width: 1px !important;
 }
 
 .border-2{
@@ -1122,14 +1114,6 @@ h4{
 
 .bg-blue-300{
   background-color: var(--blue-300) !important;
-}
-
-.bg-futureGreen-100{
-  background-color: var(--futureGreen-100) !important;
-}
-
-.bg-futureGreen-50{
-  background-color: var(--futureGreen-50) !important;
 }
 
 .bg-futureOrange-50{
